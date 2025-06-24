@@ -18,40 +18,41 @@ resource "aws_ecs_task_definition" "strapi" {
           protocol      = "tcp"
         }
       ]
-      environment = [
-        {
-          name  = "NODE_ENV"
-          value = "production"
-        },
-        {
-          name  = "DATABASE_CLIENT"
-          value = "postgres"
-        },
-        {
-          name  = "DATABASE_HOST"
-          value = "13.60.91.100"
-        },
-        {
-          name  = "DATABASE_PORT"
-          value = "5432"
-        },
-        {
-          name  = "DATABASE_NAME"
-          value = "strapi"
-        },
-        {
-          name  = "DATABASE_USERNAME"
-          value = "strapi"
-        },
-        {
-          name  = "DATABASE_PASSWORD"
-          value = "strapi"
-        },
-        {
-          name  = "DATABASE_SSL"
-          value = "false"
-        }
-      ]
+     environment = [
+  {
+    name  = "NODE_ENV"
+    value = "production"
+  },
+  {
+    name  = "DATABASE_CLIENT"
+    value = "postgres"
+  },
+  {
+    name  = "DATABASE_HOST"
+    value = "13.60.91.100" # EC2 public IP
+  },
+  {
+    name  = "DATABASE_PORT"
+    value = "5432"
+  },
+  {
+    name  = "DATABASE_NAME"
+    value = "strapi_db"
+  },
+  {
+    name  = "DATABASE_USERNAME"
+    value = "strapi"
+  },
+  {
+    name  = "DATABASE_PASSWORD"
+    value = "strapi_pass"
+  },
+  {
+    name  = "DATABASE_SSL"
+    value = "false"
+  }
+]
+
       logConfiguration = {
         logDriver = "awslogs"
         options = {
