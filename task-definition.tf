@@ -29,7 +29,7 @@ resource "aws_ecs_task_definition" "strapi" {
         },
         {
           name  = "DATABASE_HOST"
-          value = "host.docker.internal"
+          value = "13.60.91.100"
         },
         {
           name  = "DATABASE_PORT"
