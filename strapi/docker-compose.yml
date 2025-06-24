@@ -1,0 +1,39 @@
+services:
+  strapi:
+    image: node:18
+    container_name: strapi
+    working_dir: /srv/app
+    volumes:
+      - .:/srv/app
+    command: sh -c "yarn install && yarn develop"
+    ports:
+      - 1337:1337
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: strapi_db
+      DATABASE_HOST: strapi-postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi_pass
+      APP_KEYS: someAppKey
+      API_TOKEN_SALT: someApiSalt
+      ADMIN_JWT_SECRET: someAdminSecret
+      JWT_SECRET: someJWTSecret
+    depends_on:
+      - strapi-postgres
+
+  strapi-postgres:
+    image: postgres:15
+    container_name: strapi-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: strapi_db
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi_pass
+    volumes:
+      - strapi_pgdata:/var/lib/postgresql/data
+
+volumes:
+  strapi_pgdata:
+

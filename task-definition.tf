@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "strapi" {
   container_definitions = jsonencode([
     {
       name      = "strapi"
-      image     = "adarshdogra1122/strapi-app:v1"
+      image     = "adarshdogra1122/strapi-app:v2"
       essential = true
       portMappings = [
         {
@@ -29,23 +29,23 @@ resource "aws_ecs_task_definition" "strapi" {
         },
         {
           name  = "DATABASE_HOST"
-          value = "nozomi.proxy.rlwy.net"
+          value = "host.docker.internal"
         },
         {
           name  = "DATABASE_PORT"
-          value = "20653"
+          value = "5432"
         },
         {
           name  = "DATABASE_NAME"
-          value = "railway"
+          value = "strapi"
         },
         {
           name  = "DATABASE_USERNAME"
-          value = "postgres"
+          value = "strapi"
         },
         {
           name  = "DATABASE_PASSWORD"
-          value = "rzekqiawoPDLUpiiwpMsIHzocehyRmmP"
+          value = "strapi"
         },
         {
           name  = "DATABASE_SSL"
@@ -63,4 +63,3 @@ resource "aws_ecs_task_definition" "strapi" {
     }
   ])
 }
-

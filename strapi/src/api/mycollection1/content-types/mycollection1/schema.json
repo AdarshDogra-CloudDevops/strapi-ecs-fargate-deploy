@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mycollection1s",
+  "info": {
+    "singularName": "mycollection1",
+    "pluralName": "mycollection1s",
+    "displayName": "mycollection1"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "BOLDCOLLECTION": {
+      "type": "text"
+    }
+  }
+}
